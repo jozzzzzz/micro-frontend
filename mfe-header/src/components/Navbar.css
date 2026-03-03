@@ -7,10 +7,26 @@
   border-bottom: 1px solid #2d2d44;
 }
 
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .navbar-brand .logo {
   font-size: 24px;
   font-weight: bold;
   color: #6c5ce7;
+}
+
+.mfe-badge {
+  background: #6c5ce7;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
 }
 
 .navbar-menu {
@@ -28,26 +44,7 @@
   color: #a0a0b0;
 }
 
-.notification-btn {
-  position: relative;
-}
-
-.badge {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background: #e74c3c;
-  color: white;
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 10px;
-}
-
-/* ===========================================
-   BOUTON DE LA NAVBAR
-   L'equipe Navbar a defini son style ici
-   =========================================== */
-.button {
+.nav-button {
   background: #3b82f6;
   color: white;
   border: none;
@@ -59,6 +56,24 @@
   transition: background 0.2s;
 }
 
-.button:hover {
+.nav-button:hover {
   background: #2563eb;
+}
+
+.notification-btn {
+  position: relative;
+  padding: 10px 16px;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #e74c3c;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 20px;
+  text-align: center;
 }
