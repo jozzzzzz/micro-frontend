@@ -19,6 +19,7 @@ function GameCard({ game }) {
     //
     // Ecrivez votre code ici:
     eventBus.emit('game:joined', { gameName: game.name });
+
     // Feedback visuel (gardez cette ligne)
     alert(`Vous avez rejoint : ${game.name}`);
   };

@@ -18,7 +18,7 @@ function App() {
       </Suspense>
 
       <main className="shell-content">
-        <div className="content-grid">
+        <div className="content-grid-3">
           <section className="section">
             <Suspense fallback={<LoadingFallback name="Lobby" />}>
               <Lobby />
@@ -40,7 +40,10 @@ function App() {
       </main>
 
       <footer className="shell-footer">
-        <p>Shell (3000) | Header (3001) | Lobby (3002) | Catalog (3003)</p>
+        <p>
+          Shell (3000) | Header (3001) | Lobby (3002) | Catalog (3003) | Cart
+          (3004)
+        </p>
       </footer>
     </div>
   );

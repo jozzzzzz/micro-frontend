@@ -44,9 +44,7 @@ class EventBus {
    */
   off(event, callback) {
     if (!this.listeners[event]) return;
-    this.listeners[event] = this.listeners[event].filter(
-      (cb) => cb !== callback,
-    );
+    this.listeners[event] = this.listeners[event].filter(cb => cb !== callback);
   }
 
   /**
@@ -60,7 +58,7 @@ class EventBus {
     // Log pour debug
     console.log(`[EventBus] ${event}`, data);
 
-    this.listeners[event].forEach((callback) => {
+    this.listeners[event].forEach(callback => {
       try {
         callback(data);
       } catch (error) {
