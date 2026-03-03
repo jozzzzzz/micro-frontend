@@ -1,9 +1,10 @@
-import React, { Suspense, lazy } from 'react';
-import './App.css';
+import React, { Suspense, lazy } from "react";
+import "./App.css";
 
-const Header = lazy(() => import('mfeHeader/Navbar'));
-const Lobby  = lazy(() => import('mfeLobby/Lobby'));
-const Catalog = lazy(() => import('mfeCatalog/Catalog'));
+const Header = lazy(() => import("mfeHeader/Navbar"));
+const Lobby = lazy(() => import("mfeLobby/Lobby"));
+const Catalog = lazy(() => import("mfeCatalog/Catalog"));
+const Cart = lazy(() => import("mfeCart/Cart"));
 
 function LoadingFallback({ name }) {
   return <div className="loading-fallback">Chargement {name}...</div>;
@@ -27,6 +28,12 @@ function App() {
           <section className="section">
             <Suspense fallback={<LoadingFallback name="Catalog" />}>
               <Catalog />
+            </Suspense>
+          </section>
+
+          <section className="section">
+            <Suspense fallback={<LoadingFallback name="Cart" />}>
+              <Cart />
             </Suspense>
           </section>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import eventBus from 'shared/eventBus';
 import './Catalog.css';
 
@@ -13,7 +13,13 @@ const PRODUCTS = [
 
 function ProductCard({ product }) {
   const handleAddToCart = () => {
-    eventBus.emit('cart:add', { id: product.id, name: product.name, price: product.price });
+    // TODO: notifie l'eventBus que ce produit a été ajouté au panier
+    // L'événement doit transmettre : id, name, price
+    eventBus.emit('cart:add', {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+    });
   };
 
   return (
@@ -31,18 +37,13 @@ function ProductCard({ product }) {
 }
 
 function Catalog() {
-  const [cartCount, setCartCount] = useState(0);
-
   useEffect(() => {
-    const handleCartAdd = (data) => {
-      setCartCount(prev => prev + 1);
-      console.log('[EventBus] cart:add', data);
-    };
-
-    eventBus.on('cart:add', handleCartAdd);
+    const unsubscribe = eventBus.on('cart:add', (data) => {
+      console.log('[Catalog] cart:add recu', data);
+    });
 
     return () => {
-      eventBus.off('cart:add', handleCartAdd);
+      unsubscribe();
     };
   }, []);
 
@@ -51,7 +52,6 @@ function Catalog() {
       <div className="catalog-header">
         <h2>Boutique</h2>
         <span className="mfe-badge">MFE</span>
-        {cartCount > 0 && <span className="badge" style={{marginLeft: '10px'}}>{cartCount}</span>}
       </div>
       <div className="products-grid">
         {PRODUCTS.map(product => (
